@@ -138,7 +138,7 @@ footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.9rem;borde
 <header>
   <div class="wrap nav">
     <a class="logo" href="#inicio">Lustre<span>.</span>Prestige</a>
-    <button class="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <button type="button" class="menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span></button>
     <nav aria-label="Principal">
       <ul id="menu">
         <li><a href="#servicios">Servicios</a></li>
@@ -249,10 +249,10 @@ footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.9rem;borde
     <div class="clients-top">
       <h2>Quienes confían en nosotros</h2>
     </div>
-    <div class="brands" aria-label="Marcas que cuidamos">
+    <div class="brands" role="group" aria-label="Marcas que cuidamos">
       <span>Porsche</span><span>Mercedes-Benz</span><span>BMW</span><span>Range Rover</span><span>Audi</span><span>Lexus</span><span>Tesla</span>
     </div>
-    <div class="slider" aria-roledescription="carrusel" aria-label="Testimonios">
+    <div class="slider" role="group" aria-roledescription="carrusel" aria-label="Testimonios">
       <div class="quote" aria-live="polite">
         <blockquote id="q-text"></blockquote>
         <cite id="q-author"></cite>
@@ -276,12 +276,12 @@ footer{padding:2rem 0;text-align:center;color:var(--muted);font-size:.9rem;borde
     </div>
     <form id="form" novalidate>
       <div class="row">
-        <label>Nombre<input name="nombre" autocomplete="name" required><span class="err"></span></label>
+        <label>Nombre<input type="text" name="nombre" autocomplete="name" required><span class="err"></span></label>
         <label>Teléfono<input name="tel" type="tel" autocomplete="tel" required><span class="err"></span></label>
       </div>
       <label>Correo<input name="email" type="email" autocomplete="email" required><span class="err"></span></label>
       <div class="row">
-        <label>Auto (marca y modelo)<input name="auto" required><span class="err"></span></label>
+        <label>Auto (marca y modelo)<input type="text" name="auto" required><span class="err"></span></label>
         <label>Servicio
           <select name="servicio"><option>Lavado Signature</option><option>Detallado Completo</option><option>Protección Cerámica</option></select>
           <span class="err"></span>
@@ -330,7 +330,7 @@ const quotes=[
 ];
 const qt=document.getElementById('q-text'),qa=document.getElementById('q-author'),dots=document.getElementById('dots');
 let cur=0,timer;
-quotes.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Testimonio '+(i+1));b.onclick=()=>{show(i);restart()};dots.appendChild(b)});
+quotes.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Testimonio '+(i+1));b.onclick=()=>{show(i);restart()};dots.appendChild(b)});
 function show(i){
   cur=i;qt.textContent='“'+quotes[i].t+'”';
   qa.innerHTML='<b></b>'+'';qa.querySelector('b').textContent=quotes[i].a;qa.append(quotes[i].r);
